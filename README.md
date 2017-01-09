@@ -2,6 +2,8 @@
 
 [![Heroku Deploy](https://www.herokucdn.com/deploy/button.svg)](https://practica8.herokuapp.com/)
 
+[![Build Status](https://travis-ci.org/rubenjo7/Practica4-DAI.svg?branch=master)](https://travis-ci.org/rubenjo7/Practica4-DAI)
+
 ###Integración continua:
 
 Para la integración continua se ha usado Travis-CI para realizar los tests. Para llevarlo a cabo se ha necesitado crear un fichero [.travis.yml](https://github.com/rubenjo7/Practica4-DAI/blob/master/.travis.yml).
@@ -25,7 +27,9 @@ Test en ordenador personal:
 
 Test TRAVIS-CI:
 
-Si nos vamos a [TRAVIS-CI]() vemos que esta todo correcto porque esta de color verde.
+<img src="http://i68.tinypic.com/xf57k2.png" border="0" alt="Image and video hosting by TinyPic">
+
+Si nos vamos a [TRAVIS-CI](https://travis-ci.org/rubenjo7/Practica4-DAI) vemos que esta todo correcto porque esta de color verde.
 
 ###Despliegue en Heroku:
 
