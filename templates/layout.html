@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Página de prueba - Rubén Jiménez Ortega</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+
+      <div class="row">
+        <div class="col-sm-2" style="text-align:center;">
+          <img src="{{ url_for('static', filename='images/icono.png') }}" class="img-rounded" alt="Icono" width="100">
+        </div>
+        <div class="col-sm-4" style="text-align:center;">
+          <h1>Página de Rubén</h1>
+        </div>
+        <div class="col-sm-6" style="text-align:right;">
+          {% if session['logged_in'] %}
+  					<p class="bienvenido"><strong>Bienvenido:</strong> {{session['nombre']}}
+  						<br>
+  					<a style="color:red;" href="logout"> Cerrar</a>
+  				{% else %}
+          <form class="form-inline" action="/login" method="post">
+             <div class="form-group">
+               <input type="text" class="form-control" placeholder="Usuario" name="username" value="{{request.form.username }}">
+             </div>
+             <div class="form-group">
+               <input type="password" class="form-control" placeholder="Contraseña" name="password" value="{{request.form.password }}">
+             </div>
+             <button type="submit" class="btn btn-default">Login</button>
+           </form>
+          {% endif %}
+   		    {% if error %}
+   		      <p class="error"><strong>Error:</strong> {{ error }}
+   		    {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+
+      <nav role="navigation" class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="principal" class="navbar-brand"><img src="{{ url_for('static', filename='images/icono.png') }}" alt="Icono" width="30"></a>
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="principal">Home</a></li>
+                <li><a href="registro">Registrar</a></li>
+                <li><a href="comida">Comida</a></li>
+                <li><a href="contacto">Contacto</a></li>
+                <li><a href="insert">Insertar restaurante</a></li>
+                <li><a href="mod">Modificar restaurante</a></li>
+                {% if session['logged_in'] %}
+  								<li><a href="editar">Editar</a></li>
+  							{% endif %}
+            </ul>
+        </div>
+      </nav>
+
+      <div class="row">
+
+          <div class="col-sm-8">
+            <h1>{{ titulo }}</h1>
+            <hr>
+            {% block contenido %}
+
+						{% endblock %}
+          </div>
+          {% if session['logged_in'] %}
+          <div class="col-sm-4">
+            <h1>Últimas Visitas:</h1>
+            <hr>
+            <p> - {{session['enlaces'][0]}} </p>
+            <p> - {{session['enlaces'][1]}} </p>
+            <p> - {{session['enlaces'][2]}} </p>
+          </div>
+          {% endif %}
+        </div>
+
+    </div>
+
+    <div class="panel-footer" style="text-align:center;">
+      <p>© Rubén Jiménez Ortega - DAI</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

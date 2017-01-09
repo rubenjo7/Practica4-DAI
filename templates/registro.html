@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block contenido %}
+
+  {% if session['logged_in'] %}
+  <p>Ya estas registrado.</p>
+  {% else %}
+    <form action="/alta" method="POST">
+      <p style="color:black;">Nombre de usuario:</p>
+      &emsp;&emsp;&emsp;<input type="username" name="nombreusuario"  size="20" placeholder="Usuario" required><br>
+      <p style="color:black;"> Contraseña:</p>
+      &emsp;&emsp;&emsp;<input type="password" name="password" size="20" placeholder="Contraseña" required><br>
+      <p style="color:black;">Nombre:</p>
+      &emsp;&emsp;&emsp;<input type="nombre" name="nombre" size="20" placeholder="Nombre" required><br>
+      <p style="color:black;">Apellidos:</p>
+      &emsp;&emsp;&emsp;<input type="apellidos" name="apellidos" size="20" placeholder="Apellidos" required><br>
+      <p style="color:black;">Email:</p>
+      &emsp;&emsp;&emsp;<input type="email" name="email" size="20" placeholder="Email" required><br>
+      <br>
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input class="btn btn-primary" type="submit" value="Registrarse">
+    </form>
+  {% endif %}
+  {% if error2 %}
+    <p class="error"><strong>Error:</strong> {{ error2 }}
+  {% endif %}
+{% endblock %}

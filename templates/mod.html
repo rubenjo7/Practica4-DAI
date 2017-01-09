@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block contenido %}
+
+<div style="text-align:center;">
+  <form class="form-inline" action="/buscar" method="post">
+     <input type="text" name="nombre" size="25" placeholder="Nombre del restaurante">
+     <input type="text" name="id" size="25" placeholder="ID del restaurante (Solo dígitos)" pattern="^([0-9]){7,7}$">
+     <button type="submit" class="btn btn-default">Buscar</button>
+   </form>
+   <br><br>
+  {% if error4 == "No existe un restaurante llamado de ese modo." %}
+    <p class="error"><strong>Error:</strong> {{ error4 }}
+  {% endif %}
+</div>
+
+{% if error4 == " " %}
+<div class="row">
+
+    <div class="col-sm-5" style="text-align:left;">
+      <h4> DATOS ACTUALES:</h4>
+      <hr>
+      <h5>Datos generales:</h5>
+      <hr>
+      <p style="color:black;">Nombre de restaurante:</p>
+      <p style="color:blue;">{{session['nombre_restaurante']}}</p>
+      <p style="color:black;"> ID de restaurante:</p>
+      <p style="color:blue;">{{session['id_restaurante']}}</p>
+      <p style="color:black;">Cocina:</p>
+      <p style="color:blue;">{{session['cocina']}}</p>
+      <br>
+      <h5>Dirección:</h5>
+      <hr>
+      <p style="color:black;">Ciudad:</p>
+      <p style="color:blue;">{{session['ciudad']}}</p>
+      <p style="color:black;">Calle:</p>
+      <p style="color:blue;">{{session['calle']}}</p>
+      <p style="color:black;">Edificio:</p>
+      <p style="color:blue;">{{session['edificio']}}</p>
+      <p style="color:black;">Código Postal:</p>
+      <p style="color:blue;">{{session['cp']}}</p>
+      <br><br>
+    </div>
+
+    <div class="col-sm-7" style="text-align:left;">
+      <h4> DATOS A MODIFICAR:</h4>
+      <hr>
+      <form action="/modificar_restaurante" method="POST">
+        <h5>Datos generales:</h5>
+        <hr>
+        <p style="color:black;">Cocina:</p>
+        &emsp;&emsp;&emsp;<input type="text" name="cocina" size="20" placeholder="Cocina" required value={{session['cocina']}}><br>
+        <br>
+        <h5>Dirección:</h5>
+        <hr>
+        <p style="color:black;">Ciudad:</p>
+        &emsp;&emsp;&emsp;<input type="text" name="ciudad" size="20" placeholder="Ciudad" required value={{session['ciudad']}}><br>
+        <p style="color:black;">Calle:</p>
+        &emsp;&emsp;&emsp;<input type="text" name="calle"  size="20" placeholder="Calle" required value={{session['calle']}}><br>
+        <p style="color:black;">Edificio:</p>
+        &emsp;&emsp;&emsp;<input type="text" name="edificio" size="20" placeholder="Edificio (Max. 4 dígitos)" pattern="^([0-9]){1,4}$" maxlength="4" required value={{session['edificio']}}><br>
+        <p style="color:black;"> Código Postal:</p>
+        &emsp;&emsp;&emsp;<input type="text" name="cp" size="20" placeholder="codigo postal (5 dígitos)" pattern="^([0-9]){5,5}$" maxlength="5" required value={{session['cp']}}><br>
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Modificar Restaurante">
+      </form>
+    </div>
+
+  </div>
+{% endif %}
+{% endblock %}

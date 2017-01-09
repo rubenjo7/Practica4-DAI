@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block contenido %}
+
+  {% if session['logged_in'] %}
+  <p>Ya estas registrado.</p>
+  {% else %}
+
+    <form action="/insertar" method="POST">
+      <div class="row">
+
+        <div class="col-sm-6">
+          <h4>Dirección:</h4>
+          <hr>
+          <p style="color:black;">Ciudad:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="ciudad" size="20" placeholder="Ciudad" required><br>
+          <p style="color:black;">Calle:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="calle"  size="20" placeholder="Calle" required><br>
+          <p style="color:black;">Edificio:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="edificio" size="20" placeholder="Edificio (Max. 4 dígitos)" pattern="^([0-9]){1,4}$" maxlength="4" required><br>
+          <p style="color:black;"> Código Postal:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="cp" size="20" placeholder="codigo postal (5 dígitos)" pattern="^([0-9]){5,5}$" maxlength="5" required><br>
+          <br><br>
+        </div>
+        <div class="col-sm-6">
+          <h4>Datos generales:</h4>
+          <hr>
+          <p style="color:black;">Nombre:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="nombre" size="20" placeholder="Nombre" required><br>
+          <p style="color:black;">ID:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="id" size="20" placeholder="ID (7 dígitos)" pattern="^([0-9]){7,7}$" maxlength="7" required><br>
+          <p style="color:black;">Cocina:</p>
+          &emsp;&emsp;&emsp;<input type="text" name="cocina" size="20" placeholder="Cocina" required><br>
+          <br><br>
+          <input class="btn btn-primary" type="submit" value="Insertar Restaurante">
+        </div>
+
+      <br>
+    </form>
+  {% endif %}
+  {% if error3 %}
+    <p class="error"><strong>Error:</strong> {{ error3 }}
+  {% endif %}
+{% endblock %}

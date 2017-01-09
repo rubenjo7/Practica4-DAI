@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block contenido %}
+
+
+
+<div class="row">
+
+    <div class="col-sm-5">
+      <h4> DATOS ACTUALES:</h4>
+      <hr>
+      <p style="color:black;">Nombre de usuario:</p>
+      <p>{{session['nombre']}}</p>
+      <p style="color:black;"> Contraseña:</p>
+      <p>{{session['contra']}}</p>
+      <p style="color:black;">Nombre:</p>
+      <p>{{session['name']}}</p>
+      <p style="color:black;">Apellidos:</p>
+      <p>{{session['apellidos']}}</p>
+      <p style="color:black;">Email:</p>
+      <p>{{session['correo']}}</p>
+      <br><br>
+    </div>
+
+    <div class="col-sm-7">
+      <h4> DATOS A MODIFICAR:</h4>
+      <hr>
+      <form action="/modificar" method="POST">
+        <p style="color:black;"> Contraseña:</p>
+        &emsp;&emsp;&emsp;<input type="password" name="password" size="15" placeholder="Contraseña"  value={{session['contra']}} required></br>
+        <p style="color:black;">Nombre:</p>
+        &emsp;&emsp;&emsp;<input type="nombre" name="name" size="15" placeholder="Nombre" value={{session['name']}} required></br>
+        <p style="color:black;">Apellidos:</p>
+        &emsp;&emsp;&emsp;<input type="apellidos" name="apellidos" size="15" placeholder="Apellidos" value={{session['apellidos']}} required></br>
+        <p style="color:black;">Email:</p>
+        &emsp;&emsp;&emsp;<input type="email" name="email" size="15" placeholder="Email" value={{session['correo']}} required></br>
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input type="submit" value="Modificar">
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}
