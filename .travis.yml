@@ -4,4 +4,4 @@ python:
 install:
   - pip install -r requirements.txt
 #Script
-script: python test.py
+script: make test.py

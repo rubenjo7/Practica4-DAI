@@ -21,6 +21,8 @@ Tras esto, Travis comienza a instalar los paquetes necesarios y a ejecutar el te
 
 Test en ordenador personal:
 
+<img src="http://i67.tinypic.com/2aihiro.png" border="0" alt="Image and video hosting by TinyPic">
+
 Test TRAVIS-CI:
 
 Si nos vamos a [TRAVIS-CI]() vemos que esta todo correcto porque esta de color verde.
