@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 import os
 from flask_login import LoginManager
-from flask.ext import shelve
+from flask_shelve import shelve
 from pymongo import MongoClient
 from datetime import datetime
 
